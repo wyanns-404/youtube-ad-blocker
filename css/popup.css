@@ -1,0 +1,280 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+body {
+    width: 320px;
+    background: #0d0d0d;
+    color: #ffffff;
+    -webkit-font-smoothing: antialiased;
+}
+
+.container {
+    padding: 18px;
+    background:
+        radial-gradient(ellipse 80% 60% at 50% -10%, rgba(255, 0, 0, 0.12) 0%, transparent 60%),
+        linear-gradient(160deg, #111111 0%, #0d0d0d 100%);
+    min-height: 180px;
+    position: relative;
+    overflow: hidden;
+}
+
+.container::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #ff0000, #ff4444, transparent);
+    opacity: 0.8;
+}
+
+/* ── Header ── */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo img {
+    width: 30px;
+    height: 30px;
+    filter: drop-shadow(0 0 6px rgba(255, 0, 0, 0.5));
+}
+
+.logo h1 {
+    font-size: 15px;
+    color: #ffffff;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+}
+
+.logo h1 span {
+    color: #ff2222;
+}
+
+/* ── Toggle ── */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 26px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    inset: 0;
+    background: #2a2a2a;
+    border: 1px solid #3a3a3a;
+    transition: .35s cubic-bezier(.4, 0, .2, 1);
+    border-radius: 26px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 2px;
+    bottom: 2px;
+    background: #666;
+    transition: .35s cubic-bezier(.4, 0, .2, 1);
+    border-radius: 50%;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.4);
+}
+
+input:checked + .slider {
+    background: rgba(255, 0, 0, 0.15);
+    border-color: rgba(255, 0, 0, 0.4);
+}
+
+input:checked + .slider:before {
+    transform: translateX(24px);
+    background: #ff2222;
+    box-shadow: 0 0 8px rgba(255, 0, 0, 0.6);
+}
+
+/* ── Stats card ── */
+.stats-card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 14px;
+    padding: 18px 20px;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 14px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.stats-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 100%, rgba(255, 0, 0, 0.06) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.stats-card::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 20%;
+    bottom: 20%;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.08), transparent);
+}
+
+.counter-container,
+.time-saved {
+    text-align: center;
+    flex: 1;
+}
+
+.counter,
+.time {
+    font-size: 32px;
+    font-weight: 900;
+    color: #ff2222;
+    margin-bottom: 5px;
+    letter-spacing: -1px;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+    filter: drop-shadow(0 0 12px rgba(255, 0, 0, 0.35));
+}
+
+.counter-label,
+.time-label {
+    font-size: 10px;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    font-weight: 600;
+}
+
+/* ── Status ── */
+.status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #555;
+    padding: 9px 13px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 10px;
+    letter-spacing: 0.1px;
+    transition: all 0.3s ease;
+}
+
+.status-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #333;
+    flex-shrink: 0;
+}
+
+.status-dot.active {
+    background: #ff2222;
+    box-shadow: 0 0 0 3px rgba(255, 0, 0, 0.12);
+    animation: pulse 2.5s infinite;
+}
+
+.status:has(.status-dot.active) {
+    color: #888;
+    border-color: rgba(255, 0, 0, 0.12);
+}
+
+@keyframes pulse {
+    0%   { box-shadow: 0 0 0 0   rgba(255, 0, 0, 0.4); }
+    60%  { box-shadow: 0 0 0 5px rgba(255, 0, 0, 0);   }
+    100% { box-shadow: 0 0 0 0   rgba(255, 0, 0, 0);   }
+}
+
+/* ── Hover on stats card ── */
+.stats-card:hover {
+    border-color: rgba(255, 0, 0, 0.18);
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 8px 24px rgba(255, 0, 0, 0.08);
+    transform: translateY(-1px);
+}
+
+/* ── Footer ── */
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-top: 14px;
+    padding: 10px 12px;
+    background: rgba(255, 255, 255, 0.02);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 0 0 8px 8px;
+    position: relative;
+}
+
+.footer-links {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.footer-link {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: all 0.25s ease;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.footer-link img {
+    width: 16px;
+    height: 16px;
+    opacity: 0.6;
+    transition: opacity 0.25s ease;
+    filter: brightness(0) invert(1);
+}
+
+.footer-link:hover {
+    background: rgba(255, 0, 0, 0.08);
+    border-color: rgba(255, 0, 0, 0.2);
+    transform: translateY(-1px);
+}
+
+.footer-link:hover img {
+    opacity: 1;
+}
+
+.footer-text {
+    font-size: 10px;
+    color: #444;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}

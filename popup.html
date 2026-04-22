@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>CodeW - YouTube Ad Blocker</title>
+    <link rel="stylesheet" href="css/popup.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header with logo -->
+        <div class="header">
+            <div class="logo">
+                <img src="assets/icon-48.png" alt="Logo">
+                <h1>YouTube Ad Blocker</h1>
+            </div>
+            <!-- Toggle switch -->
+            <label class="switch">
+                <input type="checkbox" id="toggleButton" checked>
+                <span class="slider"></span>
+            </label>
+        </div>
+
+        <!-- Stats card -->
+        <div class="stats-card">
+            <div class="counter-container">
+                <div class="counter" id="adsBlocked">0</div>
+                <div class="counter-label">Ads Blocked</div>
+            </div>
+            <div class="time-saved">
+                <div class="time" id="timeSaved">0</div>
+                <div class="time-label">Minutes Saved</div>
+            </div>
+        </div>
+
+        <!-- Status -->
+        <div class="status">
+            <div class="status-dot active"></div>
+            <span>Active</span>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <div class="footer-links">
+                <a href="https://github.com/wyanns-404/" class="footer-link" title="GitHub" target="_blank">
+                    <img src="assets/github.svg" alt="GitHub">
+                </a>
+                <a href="https://www.instagram.com/wyanns/" class="footer-link" title="Instagram" target="_blank">
+                    <img src="assets/instagram.svg" alt="Instagram">
+                </a>
+            </div>
+            <span class="footer-text">Made With 🩶 by <span style="font-weight:1000;">@wyanns</span></span>
+        </div>
+    </div>
+    <script src="js/popup.js"></script>
+</body>
+</html> 
