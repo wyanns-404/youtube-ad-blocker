@@ -5,8 +5,6 @@
  YouTube Ad Blocker
 </h1>
 
-> 🚫 Automatically block YouTube ads — fast, lightweight, and hassle-free
-
 <p align="center">
   <img src="https://img.shields.io/github/license/wyanns-404/youtube-ad-blocker?style=for-the-badge" />
   <img src="https://img.shields.io/github/last-commit/wyanns-404/youtube-ad-blocker?style=for-the-badge" />
@@ -26,9 +24,9 @@
 
 It works automatically to:
 
-* detect ads
-* skip video ads
-* remove overlay and banner ads
+- detect ads
+- skip video ads
+- remove overlay and banner ads
 
 No setup required. No manual interaction. Just install and enjoy.
 
@@ -36,11 +34,11 @@ No setup required. No manual interaction. Just install and enjoy.
 
 ## ✨ Features
 
-* 🚫 **Auto Skip Ads** – instantly skips video ads
-* 🧹 **Remove Overlay Ads** – eliminates banners and popups
-* ⚡ **Lightweight** – no heavy dependencies
-* 🔄 **Auto Injection** – works seamlessly on YouTube navigation
-* 🔒 **Privacy Friendly** – no user data tracking
+- 🚫 **Auto Skip Ads** – instantly skips video ads
+- 🧹 **Remove Overlay Ads** – eliminates banners and popups
+- ⚡ **Lightweight** – no heavy dependencies
+- 🔄 **Auto Injection** – works seamlessly on YouTube navigation
+- 🔒 **Privacy Friendly** – no user data tracking
 
 ---
 
@@ -70,19 +68,15 @@ chrome://extensions/
 
 ## 🖼️ Preview
 
-> Add screenshots or GIFs here to make your project more attractive
-
-```md
-![Preview](./assets/preview.gif)
-```
+<img src="assets/preview.png" width="480px">
 
 ---
 
 ## ⚠️ Disclaimer
 
-* This project is for **educational purposes only**
-* YouTube continuously updates its system
-* Ad-blocking effectiveness may change over time
+- This project is for **educational purposes only**
+- YouTube continuously updates its system
+- Ad-blocking effectiveness may change over time
 
 ---
 
