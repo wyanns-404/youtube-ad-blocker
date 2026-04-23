@@ -19,7 +19,16 @@ if (window.youtubeAdBlockerInitialized) {
     
     function storageGet(keys, callback) {
         if (storage && storage.local && typeof storage.local.get === "function") {
-            storage.local.get(keys, callback);
+            try {
+                storage.local.get(keys, callback);
+            } catch (error) {
+                if (error.message.includes("Extension context invalidated")) {
+                    console.log("Extension context invalidated, using default values");
+                    callback({});
+                } else {
+                    throw error;
+                }
+            }
         } else {
             callback({});
         }
@@ -27,7 +36,16 @@ if (window.youtubeAdBlockerInitialized) {
     
     function storageSet(items, callback) {
         if (storage && storage.local && typeof storage.local.set === "function") {
-            storage.local.set(items, callback);
+            try {
+                storage.local.set(items, callback);
+            } catch (error) {
+                if (error.message.includes("Extension context invalidated")) {
+                    console.log("Extension context invalidated, skipping storage set");
+                    if (typeof callback === "function") callback();
+                } else {
+                    throw error;
+                }
+            }
         } else if (typeof callback === "function") {
             callback();
         }
@@ -230,16 +248,26 @@ if (window.youtubeAdBlockerInitialized) {
     });
     
     // Listen for messages from popup
-    chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-        if (message.action === "toggleBlocker") {
-            enabled = message.enabled;
-            storageSet({ enabled: message.enabled }, () => {
-                if (message.enabled) {
-                    startAdBlocking();
-                } else {
-                    stopAdBlocking();
+    if (typeof chrome !== "undefined" && chrome.runtime && chrome.runtime.onMessage) {
+        try {
+            chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+                if (message.action === "toggleBlocker") {
+                    enabled = message.enabled;
+                    storageSet({ enabled: message.enabled }, () => {
+                        if (message.enabled) {
+                            startAdBlocking();
+                        } else {
+                            stopAdBlocking();
+                        }
+                    });
                 }
             });
+        } catch (error) {
+            if (error.message.includes("Extension context invalidated")) {
+                console.log("Extension context invalidated, message listener not added");
+            } else {
+                throw error;
+            }
         }
-    });
+    }
 }
